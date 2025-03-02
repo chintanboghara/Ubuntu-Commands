@@ -1,213 +1,297 @@
-## File System Navigation
+## File System Navigation Commands
 
-- `pwd` - Print the current working directory.
-- `ls` - List files and directories in the current directory.
-  - `ls -l` - List in long format.
-  - `ls -a` - List all files, including hidden files.
-- `cd <directory>` - Change to the specified directory.
-  - `cd ..` - Move up one directory level.
-  - `cd ~` - Change to the home directory.
-- `mkdir <directory>` - Create a new directory.
-- `rmdir <directory>` - Remove an empty directory.
-- `touch <file>` - Create an empty file or update the timestamp of an existing file.
-- `cp <source> <destination>` - Copy files or directories.
-- `mv <source> <destination>` - Move or rename files or directories.
-- `rm <file>` - Remove a file.
-  - `rm -r <directory>` - Remove a directory and its contents recursively.
+- `ls` - List files and directories
+- `cd` - Change directory
+- `pwd` - Print current working directory
+- `mkdir` - Create a new directory
+- `rm` - Remove files and directories
+- `cp` - Copy files and directories
+- `mv` - Move or rename files and directories
+- `touch` - Create an empty file or update file timestamps
+- `cat` - Display the contents of a file
+- `head` - Display the first few lines of a file
+- `tail` - Display the last few lines of a file
+- `ln` - Create links between files
+- `find` - Search for files and directories
+- `locate` - Find files by name (uses a database updated by `updatedb`)
+- `updatedb` - Update the file database used by `locate` (run with `sudo`)
 
-## File Viewing and Editing
+## File Permission Commands
 
-- `cat <file>` - Display the contents of a file.
-- `less <file>` - View file contents one page at a time.
-- `head <file>` - Display the first 10 lines of a file.
-  - `head -n <number> <file>` - Display the first `n` lines.
-- `tail <file>` - Display the last 10 lines of a file.
-  - `tail -n <number> <file>` - Display the last `n` lines.
-- `nano <file>` - Open a file in the Nano text editor.
-- `vim <file>` - Open a file in the Vim text editor.
+- `chmod` - Change file permissions
+- `chown` - Change file ownership
+- `chgrp` - Change group ownership
+- `umask` - Set default file permissions
 
-## System Information
+## File Compression and Archiving Commands
 
-- `uname -a` - Display system information.
-- `df -h` - Display disk space usage in a human-readable format.
-- `du -sh <directory>` - Display the size of a directory.
-- `free -h` - Display memory usage in a human-readable format.
-- `top` - Display real-time system statistics and running processes.
-- `htop` - Interactive process viewer (may need to be installed).
+- `tar` - Create or extract archive files
+- `gzip` - Compress files
+- `gunzip` - Decompress files compressed with `gzip`
+- `zip` - Create compressed zip archives
+- `unzip` - Extract files from a zip archive
 
-## Package Management
+## Process Management Commands
 
-- `sudo apt update` - Update the package list.
-- `sudo apt upgrade` - Upgrade installed packages.
-- `sudo apt install <package>` - Install a package.
-- `sudo apt remove <package>` - Remove a package.
-- `sudo apt autoremove` - Remove unused packages.
-- `sudo apt search <keyword>` - Search for a package.
-- `sudo apt show <package>` - Display information about a package.
+- `ps` - Display running processes
+- `top` - Monitor system processes in real-time
+- `kill` - Terminate a process
+- `pkill` - Terminate processes based on their name
+- `pgrep` - List processes based on their name
+- `nohup` - Run a command immune to hangups
 
-## User Management
+## System Information Commands
 
-- `sudo adduser <username>` - Add a new user.
-- `sudo deluser <username>` - Delete a user.
-- `sudo passwd <username>` - Change a user's password.
-- `whoami` - Display the current username.
-- `who` - Display logged-in users.
-- `sudo usermod -aG <group> <username>` - Add a user to a group.
+- `uname` - Print system information
+- `whoami` - Display current username
+- `free` - Display memory usage information
+- `uptime` - Show system uptime
+- `lscpu` - Display CPU information
+- `lspci` - List PCI devices
+- `lsusb` - List USB devices
+- `lsof` - List open files and processes
+- `lshw` - Display detailed hardware configuration
+- `sar` - Collect and report system activity information (install with `sudo apt install sysstat`)
+- `date` - Display or set the system date and time
+- `cal` - Display a calendar
 
-## Permissions
+## Networking Commands
 
-- `chmod <permissions> <file>` - Change file permissions.
-  - Example: `chmod 755 script.sh` - Give read, write, and execute permissions to the owner, and read and execute permissions to others.
-- `chown <user>:<group> <file>` - Change file ownership.
-  - Example: `chown user:group file.txt` - Change the owner and group of `file.txt`.
+- `ifconfig` - Display network interface information (deprecated, part of `net-tools`)
+- `ip addr` - Show IP addresses and network interfaces (modern preferred method)
+- `ping` - Send ICMP echo requests to a host
+- `netstat` - Display network connections and statistics (deprecated, part of `net-tools`)
+- `ss` - Display network socket information (modern replacement for `netstat`)
+- `ssh` - Securely connect to a remote server
+- `scp` - Securely copy files between hosts
+- `wget` - Download files from the web
+- `curl` - Transfer data to or from a server
+- `rsync` - Synchronize files and directories between systems
+- `iftop` - Display network bandwidth usage (install with `sudo apt install iftop`)
+- `nc` - Netcat utility for network connections
+- `iptables` - Administration tool for IPv4 packet filtering and NAT
+- `ip route` - Display or manipulate the IP routing table (modern replacement for `route`)
+- `ssh-keygen` - Generate SSH key pairs
 
+**Note:** `ifconfig` and `netstat` are included for legacy compatibility but are deprecated in favor of `ip` and `ss` commands on modern Ubuntu systems.
 
-## Networking
+## IO Redirection
 
-- `ifconfig` - Display network interface information.
-- `ping <host>` - Test connectivity to a host.
-- `ssh <user>@<host>` - Connect to a remote host via SSH.
-- `scp <file> <user>@<host>:<destination>` - Copy files to a remote host.
-- `wget <url>` - Download a file from the internet.
-- `curl <url>` - Transfer data from or to a server.
+- `cmd < file` - Input of `cmd` is taken from `file`
+- `cmd > file` - Standard output of `cmd` is redirected to `file`
+- `cmd 2> file` - Error output of `cmd` is redirected to `file`
+- `cmd &> file` - All output (stdout and stderr) of `cmd` is redirected to `file`
+- `cmd >> file` - Append the stdout of `cmd` to `file`
+- `tee` - Redirect output to multiple files or processes
 
-## Process Management
+## Environment Variable Commands
 
-- `ps` - Display currently running processes.
-  - `ps aux` - Display all running processes.
-- `kill <PID>` - Terminate a process by its Process ID.
-  - `kill -9 <PID>` - Forcefully terminate a process.
-- `bg` - Resume a suspended job in the background.
-- `fg` - Bring a background job to the foreground.
+- `export VARIABLE_NAME=value` - Set an environment variable
+- `echo $VARIABLE_NAME` - Display an environment variable's value
+- `env` - List all environment variables
+- `unset VARIABLE_NAME` - Remove an environment variable
 
-## Intermediate Commands
+## User Management Commands
 
-### File Compression and Archiving
-- `tar -cvf archive.tar <files>` - Create a tar archive.
-- `tar -xvf archive.tar` - Extract a tar archive.
-- `tar -czvf archive.tar.gz <files>` - Create a compressed tar archive (gzip).
-- `tar -xzvf archive.tar.gz` - Extract a compressed tar archive (gzip).
-- `zip archive.zip <files>` - Create a zip archive.
-- `unzip archive.zip` - Extract a zip archive.
+- `who` - Show who is currently logged in
+- `sudo adduser username` - Create a new user account (preferred over `useradd` on Ubuntu)
+- `sudo deluser username groupname` - Remove a user from a group
+- `last` - Show recent login history
+- `sudo userdel -r username` - Delete a user account and associated files
+- `sudo passwd -l username` - Lock a user account
+- `su - username` - Switch to another user account
+- `sudo usermod -a -G groupname username` - Add a user to a group
 
-### File Searching
-- `find <directory> -name <filename>` - Search for files by name.
-  - Example: `find /home -name "*.txt"` - Find all `.txt` files in `/home`.
-- `grep <pattern> <file>` - Search for a pattern in a file.
-  - Example: `grep "error" log.txt` - Find lines containing "error" in `log.txt`.
-  - `grep -r <pattern> <directory>` - Recursively search for a pattern in a directory.
+**Note:** `finger` was removed as it is not installed by default and is less commonly used on Ubuntu.
 
-### Disk Usage Analysis
-- `ncdu` - Interactive disk usage analyzer (may need to be installed).
-- `df -h` - Display disk space usage in a human-readable format.
-- `du -sh *` - Display the size of all files and directories in the current directory.
+## Shell Commands
 
-### System Monitoring
-- `uptime` - Display system uptime and load averages.
-- `vmstat` - Display system performance statistics.
-- `iostat` - Display CPU and I/O statistics.
+- `alias` - Create an alias for a command
+- `source` - Execute commands from a file in the current shell
+- `history` - Display the command history
 
-### Environment Variables
-- `printenv` - Display all environment variables.
-- `export <variable>=<value>` - Set an environment variable.
-  - Example: `export PATH=$PATH:/new/path` - Add `/new/path` to the `PATH` variable.
-- `unset <variable>` - Remove an environment variable.
+## Scheduling Commands
 
-### Cron Jobs
-- `crontab -e` - Edit the current user's cron jobs.
-- `crontab -l` - List the current user's cron jobs.
-- `crontab -r` - Remove the current user's cron jobs.
+- `crontab` - Schedule commands or scripts to run periodically
 
-### Networking Tools
-- `netstat -tuln` - Display listening ports and connections.
-- `nmap <host>` - Scan a host for open ports (may need to be installed).
-- `traceroute <host>` - Trace the route packets take to a host.
-- `dig <domain>` - Query DNS information for a domain.
+## Text Processing Commands
 
-### System Logs
-- `tail -f /var/log/syslog` - Monitor system logs in real-time.
-- `journalctl` - Query and display systemd logs.
-  - `journalctl -xe` - Display detailed logs with explanations.
+- `grep` - Search for patterns in text
+- `awk` - Text processing tool for data extraction and manipulation
+- `sed` - Stream editor for text manipulation
+- `diff` - Compare files line by line
+- `sort` - Sort lines of text files
+- `cut` - Extract sections from lines of files
+- `wc` - Count lines, words, and characters in a file
 
-## Advanced Commands
+## General Commands
 
-### Kernel and System Management
-- `uname -r` - Display the current kernel version.
-- `sudo apt install linux-headers-$(uname -r)` - Install kernel headers for the current kernel.
-- `sudo sysctl -w <parameter>=<value>` - Modify kernel parameters at runtime.
-  - Example: `sudo sysctl -w net.ipv4.ip_forward=1` - Enable IP forwarding.
-- `sudo sysctl -p` - Apply changes from `/etc/sysctl.conf`.
+- `man` - Display the manual pages for a command
+- `which` - Display the location of a command
+- `sudo` - Run a command with administrative privileges
 
-### Advanced File System Management
-- `sudo fdisk -l` - List all disk partitions.
-- `sudo mkfs.ext4 /dev/sdX1` - Format a partition with the ext4 file system.
-- `sudo mount /dev/sdX1 /mnt` - Mount a partition to a directory.
-- `sudo umount /mnt` - Unmount a partition.
-- `sudo blkid` - Display block device attributes.
-- `sudo fsck /dev/sdX1` - Check and repair a file system.
+## System Control Commands
 
-### Advanced Networking
-- `iptables` - Configure firewall rules.
-  - Example: `sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT` - Allow SSH traffic.
-- `ufw` - Uncomplicated Firewall (UFW) management.
-  - `sudo ufw enable` - Enable UFW.
-  - `sudo ufw allow 22/tcp` - Allow SSH traffic.
-- `tcpdump` - Capture network traffic.
-  - Example: `sudo tcpdump -i eth0` - Capture traffic on the `eth0` interface.
-- `ss` - Display socket statistics.
-  - Example: `ss -tuln` - Display listening ports.
+- `shutdown` - Shut down or reboot the system
+- `reboot` - Reboot the system
+- `halt` - Halt the system
 
-### Advanced Process Management
-- `nice -n <priority> <command>` - Run a command with a specific priority.
-  - Example: `nice -n 10 ./script.sh` - Run `script.sh` with a low priority.
-- `renice <priority> -p <PID>` - Change the priority of a running process.
-- `strace <command>` - Trace system calls and signals.
-  - Example: `strace ls` - Trace the `ls` command.
-- `lsof` - List open files and processes using them.
-  - Example: `lsof -i :22` - List processes using port 22.
+## Bash Shortcuts
 
-### Advanced Package Management
-- `dpkg -i <package.deb>` - Install a `.deb` package.
-- `dpkg -r <package>` - Remove a `.deb` package.
-- `dpkg -l` - List all installed packages.
-- `apt-cache search <keyword>` - Search for packages in the cache.
-- `apt-get source <package>` - Download the source code of a package.
+- `Ctrl + A` - Move to the beginning of the line
+- `Ctrl + E` - Move to the end of the line
+- `Ctrl + B` - Move back one character
+- `Ctrl + F` - Move forward one character
+- `Alt + B` - Move back one word
+- `Alt + F` - Move forward one word
+- `Ctrl + U` - Cut from cursor to beginning of line
+- `Ctrl + K` - Cut from cursor to end of line
+- `Ctrl + W` - Cut the word before the cursor
+- `Ctrl + Y` - Paste the last cut text
+- `Ctrl + L` - Clear the screen
+- `Ctrl + R` - Search command history
+- `Ctrl + G` - Escape from history search mode
+- `Ctrl + P` - Go to previous command in history
+- `Ctrl + N` - Go to next command in history
+- `Ctrl + C` - Terminate the current command
 
-### Virtualization and Containers
-- `virsh` - Manage virtual machines (requires libvirt).
-  - Example: `virsh list --all` - List all virtual machines.
-- `docker` - Manage Docker containers.
-  - Example: `docker ps -a` - List all containers.
-- `lxc` - Manage LXC containers.
-  - Example: `lxc list` - List all LXC containers.
+## Nano Shortcuts
 
-### Advanced Log Analysis
-- `logrotate` - Manage log rotation.
-  - Example: `sudo logrotate -f /etc/logrotate.conf` - Force log rotation.
-- `awk` - Advanced text processing.
-  - Example: `awk '{print $1}' file.txt` - Print the first column of `file.txt`.
-- `sed` - Stream editor for text manipulation.
-  - Example: `sed 's/foo/bar/g' file.txt` - Replace "foo" with "bar" in `file.txt`.
+- `Ctrl + O` - Save the file
+- `Ctrl + X` - Exit Nano
+- `Ctrl + R` - Read a file into the current buffer
+- `Ctrl + J` - Justify the current paragraph
+- `Ctrl + Y` - Scroll up one page
+- `Ctrl + V` - Scroll down one page
+- `Alt + \` - Go to a specific line number
+- `Alt + ,` - Go to the beginning of the current line
+- `Alt + .` - Go to the end of the current line
+- `Ctrl + K` - Cut from cursor to end of line
+- `Ctrl + U` - Uncut/restore the last cut text
+- `Ctrl + 6` - Mark a block of text
+- `Ctrl + W` - Search for a string
+- `Alt + W` - Search and replace a string
+- `Alt + R` - Repeat the last search
 
-### System Recovery and Rescue
-- `fsck` - Check and repair a file system.
-- `chroot` - Change the root directory for a command.
-  - Example: `sudo chroot /mnt /bin/bash` - Run a shell in a different root.
-- `grub-rescue` - Repair GRUB bootloader.
-- `dd` - Low-level disk operations.
-  - Example: `dd if=/dev/sdX of=backup.img` - Create a disk image.
+## VI Shortcuts
 
-## Miscellaneous
+- `cw` - Change the current word
+- `dd` - Delete the current line
+- `x` - Delete the character under the cursor
+- `R` - Enter replace mode
+- `o` - Insert a new line below and enter insert mode
+- `u` - Undo the last change
+- `s` - Substitute the character under the cursor
+- `dw` - Delete from cursor to beginning of next word
+- `D` - Delete from cursor to end of line
+- `4dw` - Delete the next four words
+- `A` - Append at the end of the line
+- `S` - Delete the current line and enter insert mode
+- `r` - Replace the character under the cursor
+- `i` - Insert before the cursor
+- `3dd` - Delete three lines
+- `ESC` - Exit insert mode
+- `U` - Restore the current line
+- `~` - Switch case of the character
+- `a` - Append after the cursor
+- `C` - Change from cursor to end of line
 
-- `clear` - Clear the terminal screen.
-- `history` - Display command history.
-- `man <command>` - Display the manual page for a command.
-- `sudo <command>` - Execute a command with superuser privileges.
-- `exit` - Close the terminal session.
+## Vim Shortcuts
 
-## Tips
+- `i` - Enter insert mode
+- `x` - Delete the character under the cursor
+- `dd` - Delete the current line
+- `yy` - Copy the current line
+- `p` - Paste below the current line
+- `u` - Undo the last change
+- `Ctrl + R` - Redo the last undo
+- `:w` - Save the file
+- `:q` - Quit Vim
+- `:wq` - Save and quit
+- `:q!` - Quit without saving
+- `:set nu` - Display line numbers
+- `v` - Enter visual mode
+- `y` - Copy the selected text
+- `d` - Delete the selected text
+- `p` - Paste the copied or deleted text
+- `:s/old/new/g` - Replace all occurrences of 'old' with 'new'
 
-- Use `Tab` for auto-completion of commands and file names.
-- Use `Ctrl + C` to interrupt a running command.
-- Use `Ctrl + Z` to suspend a running command.
-- Use `Ctrl + D` to log out of the current shell.
+## Package Management Commands
+
+- `apt update` - Update package list
+- `apt upgrade` - Upgrade installed packages
+- `apt install package_name` - Install a package
+- `apt remove package_name` - Remove a package
+- `apt search pattern` - Search for packages
+- `apt list --installed` - List installed packages
+- `dpkg -i package.deb` - Install a `.deb` package file
+
+**Note:** Ubuntu uses `apt` and `dpkg` for package management. Other distributions may use different tools (e.g., `yum` or `dnf` for RPM-based systems, `pacman` for Arch Linux).
+
+## Disk Space Usage & Monitoring
+
+- `df -h` - Show disk space usage in human-readable format
+- `du -sh /var/log` - Show size of a specific directory
+- `du -h --max-depth=1` - Show sizes of subdirectories (1 level deep)
+- `lsblk` - Display information about block devices (partitions & disks)
+- `blkid` - Show UUID and filesystem type of partitions
+- `findmnt` - Display mounted filesystems
+- `mount | column -t` - List mounted files in a readable table format
+
+## Partition & Filesystem Management
+
+- `fdisk -l` - Show partition table of all disks (run with `sudo`)
+- `parted -l` - Display partition details using GNU Parted (run with `sudo`)
+- `mkfs.ext4 /dev/sdb1` - Format a partition with ext4 filesystem
+- `mkfs.xfs /dev/sdb1` - Format a partition with XFS filesystem
+- `e2fsck -f /dev/sdb1` - Check and repair an ext4 filesystem
+- `xfs_repair /dev/sdb1` - Repair an XFS filesystem
+- `tune2fs -m 5 /dev/sdb1` - Set reserved space on ext4 filesystem (5% in this case)
+
+## Mounting & Unmounting Filesystems
+
+- `mount /dev/sdb1 /mnt` - Mount a partition to `/mnt`
+- `umount /mnt` - Unmount a filesystem from `/mnt`
+- `mount -o remount,rw /` - Remount root filesystem as read-write
+- `mount -t nfs 192.168.1.100:/share /mnt` - Mount an NFS share
+- `mount -o loop file.iso /mnt` - Mount an ISO file as a virtual disk
+
+## Disk Performance & Health Monitoring
+
+- `iotop` - Show real-time disk I/O usage by processes (install with `sudo apt install iotop`)
+- `iostat -x 1` - Show detailed disk usage statistics (install with `sudo apt install sysstat`)
+- `smartctl -H /dev/sda` - Check SMART health status of a disk (install with `sudo apt install smartmontools`)
+- `smartctl -a /dev/sda` - Display full SMART diagnostics
+- `badblocks -sv /dev/sdb` - Scan for bad sectors on a disk
+
+## Managing Disk Quotas
+
+- `quota -u username` - Show disk quota for a user
+- `edquota -u username` - Edit disk quota for a user
+- `repquota -a` - Show quota report for all users
+- `setquota -u username 500M 1G 0 0 /dev/sda1` - Set quota (500MB soft, 1GB hard)
+
+## LVM (Logical Volume Management)
+
+- `pvcreate /dev/sdb` - Initialize a physical volume for LVM
+- `vgcreate vg /dev/sdb` - Create a volume group from a physical volume
+- `lvcreate -L 10G -n my_lv my_vg` - Create a 10GB logical volume
+- `lvextend -L +5G /dev/my_vg/my_lv` - Extend a logical volume by 5GB
+- `resize2fs /dev/my_vg/my_lv` - Resize ext4 filesystem after extending LVM
+
+## Swap Space Management
+
+- `swapon -s` - Show active swap partitions and files
+- `free -m` - Display system memory usage including swap
+- `mkswap /dev/sdb2` - Format a partition as swap
+- `swapon /dev/sdb2` - Enable swap partition
+- `swapoff /dev/sdb2` - Disable swap partition
+- `fallocate -l 2G /swapfile` - Create a 2GB swap file
+- `mkswap /swapfile` - Format swap file
+- `swapon /swapfile` - Enable swap file
+
+## Secure Disk Erasing
+
+- `shred -n 3 -z /dev/sdb` - Securely erase a disk by overwriting it 3 times
+- `dd if=/dev/zero of=/dev/sdb bs=1M status=progress` - Wipe a disk by filling it with zeroes
+- `wipe -rf /dev/sdb` - Securely wipe a disk (install with `sudo apt install wipe`)
